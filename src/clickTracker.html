@@ -1,0 +1,51 @@
+
+
+<html>
+  <head>
+    <script>
+      function Spinner() {
+        this.count = 0;
+        // this.up = function up() {
+        //   ++count;
+        //   return count;
+        // }
+        // this.down = function down() {
+        //   --count;
+        //   return count;
+        // }
+        
+        // return {
+        //   up: up,
+        //   down: down
+        // }
+        Spinner.prototype.up = function up() {
+          ++this.count;
+          return this.count;
+        }
+        Spinner.prototype.down = function down() {
+          --this.count;
+          return;
+        }
+      };
+      Spinner.prototype.up = function up() {
+          ++this.count;
+          return this.count;
+        }
+      Spinner.prototype.down = function down() {
+          --this.count;
+          return this.count;
+        }
+      var spinner = new Spinner();
+    
+      
+    </script>
+  </head>
+  <body>
+    <input type="button" value = "Track" id="but">
+      Track
+  </input>
+      <div id="p">
+          0
+   </div>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+
+
+<html>
+  <head>
+    <script>
+      var prime = (function spinnerFactory() {
+        var isprime = 0;
+        function up() {
+          ++count;
+          return count;
+        }
+        function down() {
+          --count;
+          return count;
+        }
+        
+        return {
+          up: up,
+          down: down
+        }
+      })();
+    
+      
+    </script>
+  </head>
+  <body>
+    <input type="button" value = "Track" id="but">
+      Track
+  </input>
+      <div id="p">
+          0
+   </div>
+  </body>
+</html>

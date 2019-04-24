@@ -1,0 +1,97 @@
+
+
+<html>
+  <head>
+    <script>
+      var prime = ( function Prime() {
+        var primeList = {};
+        function calculatePrime(x) {
+            for(var y=2;y*y < x; y++) {
+              if(x%y==0) {
+                primeList[x] = false;
+                return;
+              }
+            }
+            primeList[x] = true;
+        }
+        return function isPrime(x) {
+            if(x in primeList) {
+              return primeList[x];
+            }
+            else {
+              calculatePrime(x);
+              return primeList[x];
+            }
+        }
+        
+      })();
+      var oddEven = ( function OddEven() {
+        var List = {};
+        function calculateOddEven(x) {
+            if(x%2==0) {
+                List[x] = "even";
+                return;
+            }
+            List[x] = "odd";
+        }
+        return function isOddEven(x) {
+            if(x in List) {
+              return List[x];
+            }
+            else {
+              calculateOddEven(x);
+              return List[x];
+            }
+        }
+        
+      })();
+      var isOddEven = memoize(function calculateOddEven(x) {
+            if(x%2==0) {
+                return "even";
+            }
+            return "odd";
+        });
+
+
+      function memoize(fn) { //use this function to memorize any pure function.
+          var List = {};
+
+          return function() {
+            var hash = JSON.stringify(arguments);
+            if(hash in List) {
+              return List[hash];
+            }
+            else {
+              List[hash ] = fn.apply(undefined,arguments);
+              return List[hash];
+            }
+        }
+
+      }
+      
+      var add = memoize(function calculateadd(x,y) {
+            return (x+y);
+        });
+
+      function bindWith(fn, context) {
+          return fn.bind(context);
+
+      }
+
+      function binWith(fn, context) {
+        return function() {
+          return fn.apply(context,arguments);
+        }
+      }
+      
+    </script>
+  </head>
+  <body>
+    <input type="button" value = "Track" id="but">
+      Track
+  </input>
+      <div id="p">
+          0
+   </div>
+  </body>
+</html>
